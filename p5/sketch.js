@@ -2,23 +2,24 @@ let values = []
 let i = 0
 let w = 5
 let states = []
+let running = true
 
-function setup() {
+
+async function setup() {
   createCanvas(windowWidth, windowHeight/2);
   values = new Array(floor(width/w))
-  console.log()
-  console.log(values)
-
   for (let i =0; i< values.length; i++){
     values[i] = i * (height/values.length)
     states[i] = -1
   }
   values = values.sort(() => Math.random() - 0.5)
   frameRate(60)
-  quickSort(values, 0 , values.length -1)
+  await quickSort(values, 0 , values.length -1)
+  // await finished()
 }
 
 async function quickSort(arr, start, end){
+  if (!running) return
   if (start >= end){
     return
   }
@@ -28,10 +29,7 @@ async function quickSort(arr, start, end){
   await Promise.all([ 
     quickSort(arr, start, index -1),
     quickSort(arr, index +1, end )
-  ])
-
-  
-  
+  ])  
 }
 
 async function partition(arr, start, end){
@@ -60,29 +58,41 @@ async function partition(arr, start, end){
 }
 
 
-function draw() {
+async function draw() {
   background(51);
 
   for (let i = 0; i < values.length; i++){
-    noStroke()
+    stroke(0)
     if (states[i] == 0){
       fill('#E0777D')
     } 
     else if(states [i] == 1){
+      fill('#5DADE2')
+    }
+    else if(states[i] == 2){
       fill('#D6FFB7')
     }
     else{
       fill(255)
     }
     rect(i * w, height - values[i], w, values[i])
-    
+  }
+}
+
+async function finished(){
+  
+  console.log('Finished')
+  
+  for (let i = 0; i < values.length; i++){
+    states[i] = 0
+    await sleep(3) 
+    states[i] = 2
   }
 }
 
 
-
 async function swap(arr, a, b){
-  await sleep(50)
+  await sleep(25)
   let temp = arr[a]
   arr[a] = arr[b]
   arr[b] = temp
@@ -91,3 +101,8 @@ async function swap(arr, a, b){
 function sleep(ms){
   return new Promise(resolve => setTimeout(resolve,ms))
 }
+
+
+// function mousePressed() {
+//   running = !running // flip the boolean
+// }
