@@ -1,5 +1,5 @@
 
-let ppValues = []
+let pValues = []
 let i = 0
 let w = 5
 let states = []
@@ -11,11 +11,11 @@ function setup() {
   
   pValues = new Array(floor(width/w))
   for (let i =0; i< pValues.length; i++){
-    pValues[i] = i * (height/ppValues.length)
+    pValues[i] = i * (height/pValues.length)
     states[i] = -1
   }
   console.log(states)
-  ppValues = ppValues.sort(() => Math.random() - 0.5)
+  pValues = pValues.sort(() => Math.random() - 0.5)
   frameRate(60)
   pancake_sort(pValues)
 }
