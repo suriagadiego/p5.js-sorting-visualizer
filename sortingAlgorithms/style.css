@@ -1,0 +1,18 @@
+.navbar-brand {
+    padding: 15px;
+}
+
+.navbar {
+    border-bottom: 1px solid rgb(221, 221, 221);  
+}
+
+body {
+    background-color: #e5e4e2;
+}
+
+.accordion {
+    margin: 5% 20% 0 20%;
+    border: 1px solid darkgrey;
+    background-color: white;
+    border-radius: 5px;
+}

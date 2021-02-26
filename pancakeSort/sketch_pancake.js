@@ -1,28 +1,30 @@
 
-let values = []
+let ppValues = []
 let i = 0
 let w = 5
 let states = []
 let index
 const time = 1000
 function setup() {
-  createCanvas(windowWidth, windowHeight/2);
-  values = new Array(floor(width/w))
-  for (let i =0; i< values.length; i++){
-    values[i] = i * (height/values.length)
+  var myCanvasPancake = createCanvas(windowWidth, windowHeight/2);
+  myCanvasPancake.parent("pancakeSortContainer");
+  
+  pValues = new Array(floor(width/w))
+  for (let i =0; i< pValues.length; i++){
+    pValues[i] = i * (height/ppValues.length)
     states[i] = -1
   }
   console.log(states)
-  values = values.sort(() => Math.random() - 0.5)
+  ppValues = ppValues.sort(() => Math.random() - 0.5)
   frameRate(60)
-  pancake_sort(values)
+  pancake_sort(pValues)
 }
 
 
 function draw() {
   background(51);
 
-  for (let i = 0; i < values.length; i++){
+  for (let i = 0; i < pValues.length; i++){
     stroke(0)
     if (states[i] == 0){
       fill('#E0777D')
@@ -36,7 +38,7 @@ function draw() {
     else{
       fill(255)
     }
-    rect(i * w, height - values[i], w, values[i])
+    rect(i * w, height - pValues[i], w, pValues[i])
   }
 }
 
@@ -104,7 +106,7 @@ async function finished(){
   
   console.log('Finished')
   
-  for (let i = 0; i < values.length; i++){
+  for (let i = 0; i < pValues.length; i++){
     states[i] = 0
     await sleep(3) 
     states[i] = 2
