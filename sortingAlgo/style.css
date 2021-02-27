@@ -1,0 +1,28 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+.navbar-brand {
+  padding: 15px;
+}
+
+.navbar {
+  border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+body {
+  background-color: #e5e4e2;
+}
+
+.accordion {
+  margin: 5% 20% 5% 20%;
+  border: 1px solid darkgrey;
+  background-color: white;
+  border-radius: 5px;
+}
