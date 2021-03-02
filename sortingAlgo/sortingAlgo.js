@@ -1,4 +1,4 @@
-const time = 500
+const time = 1000
 sleep = function(ms){
   return new Promise(resolve => setTimeout(resolve,ms))
 }
@@ -19,15 +19,15 @@ finished = async function(states){
 var cocktail = function(c){
   c.values = []
   c.i = 0
-  c.w = 5
+  c.w = 20
   c.states = []
   c.started = false
 
   c.setup = function(){
-    c.canvas = c.createCanvas(600, 200);
+    c.canvas = c.createCanvas(835, 200);
     c.values = new Array(~~(c.width / c.w))
     for (let i = 0; i < c.values.length; i++) {
-      c.values[i] = i * (c.height / c.values.length) + 2
+      c.values[i] = i * (c.height / c.values.length) + 5
       c.states[i] = -1
     }
     c.values = c.values.sort(() => Math.random() - 0.5)
@@ -105,14 +105,14 @@ var cocktail = function(c){
 var pancake = function(p){
   p.values = []
   p.i = 0
-  p.w = 5
+  p.w = 20
   p.states = []
   p.started = false
   p.setup = function(){
-    p.canvas = p.createCanvas(600, 200);
+    p.canvas = p.createCanvas(835, 200);
     p.values = new Array(~~(p.width / p.w))
     for (let i = 0; i < p.values.length; i++) {
-      p.values[i] = i * (p.height / p.values.length) + 2
+      p.values[i] = i * (p.height / p.values.length) + 5
       p.states[i] = -1
     }
     p.values = p.values.sort(() => Math.random() - 0.5)
@@ -212,14 +212,14 @@ var pancake = function(p){
 var flash = function(f){
   f.values = []
   f.i = 0
-  f.w = 5
+  f.w = 20
   f.states = []
   f.started = false
   f.setup = function(){
-    f.canvas = f.createCanvas(600, 200);
+    f.canvas = f.createCanvas(835, 200);
     f.values = new Array(~~(f.width / f.w))
     for (let i = 0; i < f.values.length; i++) {
-      f.values[i] = i * (f.height / f.values.length) + 2
+      f.values[i] = i * (f.height / f.values.length) + 5
       f.states[i] = -1
     }
     f.values = f.values.sort(() => Math.random() - 0.5)
@@ -279,8 +279,7 @@ var flash = function(f){
         
       
     }
-    f.states[f.mm] = -1
-    f.states[f.max] = -1
+    // f.states[f.mm] = -1
  
      if (f.min === arr[f.max]) {
         return arr;
@@ -305,6 +304,8 @@ var flash = function(f){
     f.hold = arr[f.max];
     arr[f.max] = arr[0];
     arr[0] = f.hold;
+    f.states[f.max] = -1
+
  
     //permutation
     f.move = 0, f.t, f.flash;
@@ -329,6 +330,8 @@ var flash = function(f){
             arr[f.t] = f.flash;
             f.flash = f.hold;
             ++f.move;
+           f.states[f.n-1] = 2
+
         }
     }
  
@@ -339,7 +342,7 @@ var flash = function(f){
       f.hold = arr[j];
       f.i = j - 1;
         while (f.i >= 0 && arr[f.i] > f.hold) {
-          await sleep(time)
+          // await sleep(time)
             arr[f.i + 1] = arr[f.i--];
         }
         // await sleep(time)

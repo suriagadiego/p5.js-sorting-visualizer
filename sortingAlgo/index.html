@@ -16,23 +16,27 @@
   </head>
 
   <body>
-      <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">algorithms explained. char</span>
-      </div> 
-    </nav>
-  
-    <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Pancake Sorting
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <h5>Intuitive Algorithm</h5>
-            <p>Given <code>arr = unsorted array</code> with the size of <code>n.</code></p>
+      
+    <div class="container-fluid">
+      <div class="d-flex justify-content-center">
+        <h5 class="subject">Advanced Data Structures and Algorithms</h5>
+      </div>
+    </div> 
+
+    <div class="container"> 
+      <h5 class="title">Pancake Sorting Algorithm</h5>
+      <p class="definition">
+        Definition
+        <br>
+        We are given a stack of n pancakes, each of different size. Our goal is to sort this stack
+        from smallest to largest (largest being on the bottom of the stack). The only thing
+        we are allowed to do is to insert the spatula in between two pancakes (or between the
+        bottom pancake and the plate), and flip over all the pancakes that are on top of the
+        spatula.
+      </p>
+      <img src="../images/pancake.PNG" alt="" class="center">
+      <h5>Intuitive Algorithm</h5>
+      <p>Given <code>arr = unsorted array</code> with the size of <code>n.</code></p>
             <ol>  
               <li>Find the <code>hn = highest number</code>  out of order pancake.</li>
               <li>Flip up the starting index <code>(arr[0])</code> up to the index of the largest number <code>(indexOf[ln])</code> found.</li>
@@ -40,56 +44,67 @@
               <li>Decrease the size of the unsorted array to 1, <code>n = n - 1</code> (since we already placed the highest number to the last, it is already sorted).</li>
               <li>Repeat the process  until the stack is ordered.</li>
             </ol>
-          <div id = "pancake">
+      
+      <h5>Visualization</h5>
+      <div id = "pancake" class="center">
           
-          </div>
-        </div>
       </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Cocktail Sorting
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <h5>Algorithm</h5>
+      <h7>Time Complexity - <code>O(N<span>&#178;</span>)</code></h7>
+      <br>
+      <h7>Space Complexity - <code>O(1)</code> </h7>
+      
+      
+      <h5 class="title" style="margin-top: 30px;">Cocktail Sorting Algorithm</h5>
+      <p class="definition">
+        Definition
+        <br>
+        Cocktail Sort is a variation of Bubble sort. The Bubble sort algorithm always traverses elements from left and moves the largest element 
+        to its correct position in first iteration and second largest in second iteration and so on. 
+        Cocktail Sort traverses through a given array in both directions alternatively. 
+      </p>
+      <h5>Algorithm</h5>
            <p>Each iteration of the algorithm is broken up into 2 steps: </p>
            <ol>
              <li>Start from the beginning of the array and use bubble sort to move the largest to the end of the array.</li>
              <li>Start from the end of the array and move the smallest unit to the beginning of the array.</li>
              <li>Repeat Step 1 and 2 until the array is sorted.</li>
            </ol>
-          <div id = "cocktail">
+      
+      <h5>Visualization</h5>
+      <div id = "cocktail" class="center">
           
-          </div>
-        </div>
       </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-          <div id = "flash">
-          
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <h7>Time Complexity</h7>
+      <ul>
+        <li>Worst and Average Case Time Complexity: <code>O(n*n) or O(N<span>&#178;</span>)</code>. </li>
+        <li>Best Case Time Complexity: <code>O(n)</code>. Best case occurs when array is already sorted.</li>
+      </ul>
+      <h7>Space Complexity - <code>O(1)</code> </h7>
 
+      <h5 class="title" style="margin-top: 30px;">Flash Sorting Algorithm</h5>
+      <p class="definition">
+        Definition
+        <br>
+        Flashsort is an efficient in-place implementation of historgram sort, itself a type of bucket sort. It assigns each of the n input elements to one of m buckets, 
+        efficiently rearranges the input to place the buckets in the correct order, then sorts each bucket.
+      </p>
+      <h5>Algorithm</h5>
+           <ol>
+             <li>Find the minimum and maximum value in the array.</li>
+             <li>Linearly divide the range [min, max] into m buckets.</li>
+             <li>Start with the first element, move it into its correct position, takes the element that used to be at that place and move it into its correct position and so on.</li>
+             <li>The elements are now near-sorted however since the distribution of the elements is not always perfectly even our estimates of where the elements go may be off by a bit. 
+                To solve this we finish up the algorithm with a classical insertion sort in order to correct the minor mistakes.</li>
+           </ol>
+      
+      <h5>Visualization</h5>
+      <div id = "flash" class="center">
+          
+      </div>
+      <h7>Time Complexity - <code>O(4 * n) or O(n)</code></h7>
+      <br>
+      <h7>Space Complexity - <code>O(~~(0.45 * n)) or O(n)</code> </h7>
+    </div>
     
-      <!-- <div id="cocktail">
-      </div>
-      <div id="pancake">
-      </div>
-      <div id="flash">
-      </div> -->
   </body>
 </html>
