@@ -15,7 +15,7 @@ canvas {
 body {
   background-color: #f1f3fe;
   background-image: url('images/bg.png');
-  background-size: cover;
+  background-size: contain;
   background-attachment: fixed;
 }
 
