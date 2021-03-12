@@ -41,14 +41,14 @@
               <li>Repeat the process  until the stack is ordered.</li>
             </ol>
       <h5>Implementation Visualization</h5>
-      <div id = "pancake" class="center">
+      <div id = "pancake" class="center" style="width: 100%;">
     
       </div>
       <p></p>
       <h5>Complexity</h5>
-      <h7>Time Complexity - <code>O(n<span>&#178;</span>)</code></h7>
+      <h7>Time Complexity - <code>O(n<span>&#178;</span>)</code> - time increases proportion to the number of items.</h7>
       <br>
-      <h7>Space Complexity - <code>O(1)</code> - a list is not needed to hold the result of the function.</h7>
+      <h7>Space Complexity - <code>O(1)</code> - an extra list is not needed to hold the result of the function.</h7>
       <p></p>
       <h5>Strength</h5>
       <ul>
@@ -68,11 +68,32 @@
       </p>
       <h5>Algorithm</h5>
            <p>Each iteration of the algorithm is broken up into 2 steps: </p>
-           <ol>
-             <li>Start from the beginning of the array and use bubble sort to move the largest to the end of the array.</li>
-             <li>Start from the end of the array and move the smallest unit to the beginning of the array.</li>
-             <li>Repeat Step 1 and 2 until the array is sorted.</li>
+           <ol type="I">
+             <li>First Pass</li>
+             <ol>
+             <li>Loop through the array starting from beginning of the unsorted array until the end of the unsorted array.</li>
+             <li>Use Bubble Sort - compare adjacent items from <b>left to right</b>
+                <ul>
+                  <li>If the value on the right is lower than the left, swap.</li>
+                  <li>Else - Do nothing.</li>
+                  <li>Continue to next items, until the largest value is at the end of the array.</li>
+                </ul>
+            </li>
+            </ol>
+            <li>Second Pass</li>
+            <ol>
+            <li>Loop through the array starting from the index before the last sorted value.</li>
+            <li>Compare adjacent items from <b>right to left</b></li>
+              <ul>
+                <li>If the value on the left is greater than the right, swap.</li>
+                <li>Else - Do nothing.</li>
+                <li>Continue to next items, until the smallest value is at the end of the array.</li>
+              </ul>
+            </ol>
            </ol>
+           <ul>
+             <li>Repeat until there is no available items to swap. This indicates that the array is already sorted.</li>
+           </ul>
       
       <h5>Implementation Visualization</h5>
       <div id = "cocktail" class="center" style="width: 100%;">
@@ -82,10 +103,10 @@
       <h5>Complexity</h5>
       <h7>Time Complexity</h7>
       <ul>
-        <li>Worst and Average Case Time Complexity: <code>O(n*n) or O(n<span>&#178;</span>)</code>. </li>
+        <li>Worst and Average Case Time Complexity: <code>O(2n*n) or -> O(n<span>&#178;</span>)</code>. - O(2n*n) because it contains two consecutive loops, for first pass and second pass, removed the constant, thus O(n<span>&#178;</span>).</li>
         <li>Best Case Time Complexity: <code>O(n)</code>. Best case occurs when array is already sorted.</li>
       </ul>
-      <h7>Space Complexity - <code>O(1)</code> - a list is not needed to hold the result of the function.</h7>
+      <h7>Space Complexity - <code>O(1)</code> - an extra list is not needed to hold the result of the function.</h7>
       <p></p>
       <h5>Strength</h5>
       <ul>
@@ -106,7 +127,7 @@
       <h5>Algorithm</h5>
            <ol>
              <li>Find the minimum and maximum value in the array.</li>
-             <li>Linearly divide the range [min, max] into m buckets.</li>
+             <li>Linearly divide the range [min, max] into <code>m</code> buckets.</li>
              <li>Start with the first element, move it into its correct position, takes the element that used to be at that place and move it into its correct position and so on.</li>
              <li>The elements are now near-sorted however since the distribution of the elements is not always perfectly even our estimates of where the elements go may be off by a bit. 
                 To solve this we finish up the algorithm with a classical insertion sort in order to correct the minor mistakes.</li>
@@ -118,7 +139,8 @@
       </div>
       <p></p>
       <h5>Complexity</h5>
-      <h7>Time Complexity - <code>O(4 * n) or O(n)</code></h7>
+      <h7>Time Complexity - <code>O(4 * n) or O(n)</code>, each step takes O(n), 
+          insertion sort performs on best case scenario O(n) because the elements are near-sorted.</h7>
       <br>
       <h7>Space Complexity - <code>O(~~(0.45 * n)) or O(n)</code> - for the buffer or "buckets" used to store temporary values. </h7>
       <p></p>
