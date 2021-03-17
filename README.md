@@ -1,4 +1,4 @@
 # p5.js-sorting-visualizer
 
-install p5.vs_code in visual studio code extensions 
+install p5.vs_code in visual studio code extensions  \n
 click on the sorting visualiuzer to start
